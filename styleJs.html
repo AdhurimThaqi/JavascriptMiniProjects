@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+<h4>Event Listener</h4>
+
+    <style>
+        #myBox{
+            background-color: lightgreen;
+            width: 410px;
+            height: 410px;
+            font-size: 4.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            text-align: center;
+
+        }
+        #myButton{
+            font-size: 3rem;
+        }
+        body{
+            margin: 0;
+        }
+        #box2{
+            background-color: lightblue;
+            width: 200px;
+            height: 200px;
+            font-size: 7.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+        }
+    </style>
+
+
+<div id="myBox">
+    Click me 😀
+</div>
+
+
+
+
+
+
+
+
+    
+    <script>
+        const myBox = document.getElementById("myBox");
+        const box2 = document.getElementById("box2");
+        //click event
+        myBox.addEventListener("click", function(event){
+           myBox.style.backgroundColor = "tomato";
+           myBox.innerText = "I was clicked! 👏";
+        });
+        
+        myBox.addEventListener("mouseover", event => {
+            myBox.style.backgroundColor = "green";
+            myBox.innerText = "I'm hovering my mouse 👏";
+
+        })
+
+        myBox.addEventListener("mouseout", event => {
+            myBox.style.backgroundColor = "red";
+            myBox.innerText = "Im not hovering anymore! 👏";
+        })
+     
+    
+    </script> 
+    
+</body>
+</html>

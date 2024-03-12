@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emoji Movement</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>😁</text></svg>">
+
+</head>
+<body>
+    <style>
+        body{
+            margin: 0;
+        }
+        #myBox{
+            background-color: lightblue;
+            width: 200px;
+            height: 200px;
+            font-size: 7.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+    </style>
+    
+    
+    
+    <div id="myBox">
+        😃
+    </div>
+
+
+<script>
+
+    const myBox = document.getElementById("myBox");
+    const moveAmount = 10;
+    let x = 0; //horizontal
+    let y = 0; //vertical
+
+    document.addEventListener("keydown", event => {
+        
+        if(event.key.startsWith("Arrow")){
+
+            switch(event.key){
+                case "ArrowUp":
+                    y -= moveAmount;
+                    break;
+                case "ArrowDown":
+                    y += moveAmount;
+                    break;
+                case "ArrowLeft":
+                    x -= moveAmount;
+                    break;
+                case "ArrowRight":
+                    x += moveAmount;
+                    break;
+            }
+            myBox.style.top = `${y}px`;
+            myBox.style.left = `${x}px`;
+        }
+    });
+
+    document.addEventListener("keydown", event => {
+        myBox.textContent = "😲";
+        myBox.style.backgroundColor = "tomato";
+    })
+
+    document.addEventListener("keyup", event => {
+        myBox.textContent = "😃";
+        myBox.style.backgroundColor = "lightblue";
+    })
+
+
+
+</script>
+
+</body>
+</html>
