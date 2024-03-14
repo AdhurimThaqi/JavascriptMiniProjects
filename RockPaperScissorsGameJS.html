@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✂</text></svg>">
+</head>
+<body>
+    <style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    h1{
+        font-size: 3.5rem;
+        color: black;
+    }
+    .choices{
+        margin-bottom: 30px;
+    }
+    .choices button{
+        font-size: 7.5rem;
+        min-width: 160px;
+        margin: 0 10px;
+        border-radius: 250px;
+        background-color: rgb(55, 202, 251);
+        cursor: pointer;
+        transition: background-color 0.5s ease
+    }
+    .choices button:hover{
+        background-color: rgb(0, 145, 255);
+    }
+    #playerDisplay, #computerDisplay{
+        font-size: 2.5rem;
+    }
+    #resultDisplay{
+        font-size: 5rem;
+        margin: 30px 0;
+    }
+    .scoreDisplay{
+        font-size: 2rem;
+    }
+    .greenText, #playerScoreDisplay{
+        color: rgba(4, 255, 4, 0.821);
+    }
+    .redText, #computerScoreDisplay{
+        color: rgb(190, 2, 2);
+    }
+    </style>
+
+    <h1>Rock - Paper - Scissors</h1>  
+
+<div class="choices">
+    <button onclick="playGame('rock')">👊</button>
+    <button onclick="playGame('paper')">✋</button>
+    <button onclick="playGame('scissors')">✌</button>
+</div>
+
+
+<div id="playerDisplay">PLAYER:</div>
+<div id="computerDisplay">COMPUTER:</div>
+<div id="resultDisplay"></div>
+
+<div class="scoreDisplay">Player score: 
+    <span id="playerScoreDisplay">0</span>
+</div>
+
+<div class="scoreDisplay">Computer score: 
+    <span id="computerScoreDisplay">0</span>
+</div>
+
+
+
+    <script>
+        const choices = ["rock", "paper", "scissors"];
+        const playerDisplay = document.getElementById("playerDisplay");
+        const computerDisplay = document.getElementById("computerDisplay");
+        const resultDisplay = document.getElementById("resultDisplay");
+        const playerScoreDisplay = document.getElementById("playerScoreDisplay");
+        const computerScoreDisplay = document.getElementById("computerScoreDisplay");
+        let playerScore = 0;
+        let computerScore = 0;
+       
+
+        function playGame(playerChoice){
+            const computerChoice = choices[Math.floor(Math.random()) * 3]
+            let result = "";
+
+
+            if(playerChoice === computerChoice) {
+            
+                result = "It's a TIE!";
+            }
+            else{
+                switch(playerChoice){
+                    case "rock":
+                       result = (computerChoice == "scissors") ? "You win" : "You lose";
+                        break;
+                    case "paper":
+                       result = (computerChoice == "rock") ? "You win" : "You lose";
+                        break;
+                    case "scissors":
+                       result = (computerChoice == "paper") ? "You win" : "You lose";
+                        break;        
+                }   
+            }
+            playerDisplay.textContent = `Player: ${playerChoice}`;
+            playerDisplay.textContent = `Computer: ${computerChoice}`;
+            resultDisplay.textContent = result;
+
+            resultDisplay.classList.remove("greenText", "redText");
+    
+            switch(result){
+            case "You win":
+                resultDisplay.classList.add("greenText");
+                playerScore++;
+                playerScoreDisplay.textContent = playerScore;
+                break;
+            case "You lose":
+                resultDisplay.classList.add("redText");
+                computerScore++;
+                computerScoreDisplay.textContent = computerScore;
+                break;
+            }
+    
+        }
+
+
+
+    </script>
+</body>
+</html>
